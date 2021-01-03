@@ -1,8 +1,10 @@
 // handler for python scripts
 
 // package imports
-const runCode = require('../lib/runCode')
+// const runCode = require('../lib/runCode')
 const isValid = require('../lib/valid')
+const axios = require('axios')
+const execute = require('../lib/execute')
 
 // execution handling
 const pythonHandler = async (key, storagePath) => {
@@ -28,13 +30,15 @@ const pythonHandler = async (key, storagePath) => {
     ))
   ) {
     return {
-      code: 1,
+      // code: 1,
+      stdout: '',
       stderr: 'invalid code',
     }
   }
 
   // we use a promisified exec() call so that the child process output can be handled outside the callback
-  return runCode('py', filePath)
+  const result = await execute('py', filePath)
+  return result
 }
 
 //code handler exported

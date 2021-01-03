@@ -1,16 +1,16 @@
 // handler for c++ programs
 
 // package imports
-const runCode = require('../lib/runCode')
+// const runCode = require('../lib/runCode')
 const isValid = require('../lib/valid')
+const execute = require('../lib/execute')
 
 // execution handling
 
 const cppHandler = async (key, storagePath) => {
-  const filePath = storagePath + key  
+  const filePath = storagePath + key
   // RegExp for #include <foo> statement sanitisation
   const importRE = /#include\s*<([\w^h]*).?h?>/gim
-
 
   // list of acceptable libraries
   const acceptList = [
@@ -38,14 +38,16 @@ const cppHandler = async (key, storagePath) => {
   if (!(await isValid(filePath + '.cpp', false, acceptList, importRE, ''))) {
     return {
       code: 1,
+      stdout: '',
       stderr: 'invalid code',
     }
   }
 
   // we use a promisified exec() call so that the child process output can be handled outside the callback
-  return await runCode('cpp', filePath)
-
-  // returns exec() result to app
+  const result = await execute('cpp', filePath)
+  console.log('retruning to handler with result')
+  console.log(result)
+  return result
 }
 
 // code handler exported
