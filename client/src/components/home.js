@@ -23,22 +23,70 @@ const defaultCode = {
 }
 
 const Homepage = () => {
-  const [userCode, setUserCode] = useLocalStorage('userCode', '')
-  const [mode, setMode] = useLocalStorage('mode', 'python')
-  const [code, setCode] = useLocalStorage('code', defaultCode[mode])
-  const [input, setInput] = useLocalStorage('input', '')
+  // const [userCode, setUserCode] = useLocalStorage('userCode', '')
+  // const [mode, setMode] = useLocalStorage('mode', 'python')
+  // const [code, setCode] = useLocalStorage('code', defaultCode[mode])
+  // const [input, setInput] = useLocalStorage('input', '')
+  const [userCode, setUserCode] = useState('')
+  const [mode, setMode] = useState('python')
+  const [code, setCode] = useState(defaultCode[mode])
+  const [input, setInput] = useState('')
   const [output, setOutput] = useState('')
   const [joinedSessionCode, setJoinedSessionCode] = useState('')
 
   useEffect(() => {
     if (userCode === '') {
-      axios.get('/code').then(({ data }) => setUserCode(data))
+      axios
+        .get('/code')
+        .then(({ data }) => {
+          setUserCode(data)
+
+          socket.emit('hostSession', {
+            channelID: data,
+          })
+        })
+        .catch((e) => console.log('error', e))
     }
-    socket.emit('joinSession', userCode)
   }, [])
 
   useEffect(() => {
     console.log(joinedSessionCode)
+
+    socket.emit('joinSession', {
+      channelID: joinedSessionCode,
+    })
+  }, [joinedSessionCode])
+
+  useEffect(() => {
+    if (!joinedSessionCode) {
+      socket.emit('realtime', {
+        channelID: userCode,
+        mode,
+        code,
+        input,
+        output,
+      })
+      socket.on('initialLoad', () => {
+        socket.emit('realtime', {
+          channelID: userCode,
+          mode,
+          code,
+          input,
+          output,
+        })
+      })
+    }
+  }, [code, output, mode, input, userCode, joinedSessionCode])
+
+  useEffect(() => {
+    if (joinedSessionCode) {
+      socket.on('realReceive', (data) => {
+        setMode(data.mode)
+        setInput(data.input)
+        setOutput(data.output)
+        setCode(data.code)
+      })
+    }
   }, [joinedSessionCode])
 
   const modeHandle = (e) => {
@@ -78,7 +126,11 @@ const Homepage = () => {
             <button
               className="nav-btn"
               onClick={() => {
+                socket.close()
                 setJoinedSessionCode('')
+                setInput('')
+                setOutput('')
+                setCode(defaultCode[mode])
               }}
             >
               <h2>disconnect</h2>
@@ -121,6 +173,7 @@ const Homepage = () => {
           <select
             id="language-select"
             defaultValue={mode}
+            value={mode}
             onChange={modeHandle}
           >
             {languages.map((lang) => {
