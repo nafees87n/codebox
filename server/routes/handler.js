@@ -15,7 +15,7 @@ const router = express.Router()
 // middleware
 router.use(bodyParser.json()) // for parsing application/json
 router.use(bodyParser.urlencoded({ extended: true }))
-router.use(cors({ origin: 'http://rce-client-test.herokuapp.com' }))
+router.use(cors({ origin: 'http://codebox-rce.herokuapp.com' }))
 
 // routes
 

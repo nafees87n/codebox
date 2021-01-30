@@ -15,10 +15,10 @@ const server = require('http').createServer(app)
 app.use('/', require('./routes/handler'))
 //cors
 app.use(bodyParser.json())
-app.use(cors({ origin: 'http://rce-client-test.herokuapp.com' }))
+app.use(cors({ origin: 'http://codebox-rce.herokuapp.com' }))
 const io = socketIo(server, {
   cors: {
-    origin: 'http://rce-client-test.herokuapp.com',
+    origin: 'http://codebox-rce.herokuapp.com',
     methods: ['GET', 'POST'],
     allowedHeaders: ['my-custom-header'],
     credentials: true,
