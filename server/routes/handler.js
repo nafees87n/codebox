@@ -6,6 +6,7 @@ const pythonHandler = require('../languages/python')
 const cppHandler = require('../languages/cpp')
 const jsHandler = require('../languages/javascript')
 const crypto = require('crypto')
+const cors = require('cors')
 
 // global variables initialisation
 const USERSTORAGEPATH = '/storage/'
@@ -14,6 +15,7 @@ const router = express.Router()
 // middleware
 router.use(bodyParser.json()) // for parsing application/json
 router.use(bodyParser.urlencoded({ extended: true }))
+router.use(cors({ origin: 'http://rce-client-test.herokuapp.com' }))
 
 // routes
 
