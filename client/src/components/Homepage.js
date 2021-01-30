@@ -20,7 +20,7 @@ import './Homepage.css'
 
 // global vars
 var languages = ['python', 'c_cpp', 'javascript']
-const socket = openSocket('http://localhost:9000')
+const socket = openSocket('http://13.126.57.93')
 const modes = { javascript: 'js', c_cpp: 'cpp', python: 'py' }
 const defaultCode = {
   javascript: "console.log('hello rce')",

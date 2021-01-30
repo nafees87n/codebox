@@ -9,7 +9,7 @@ services:
   server:
     build: ./server
     ports:
-      - '9000:9000'
+      - '80:9000'
       # localhost:9000/ for host machine
       # server:9000/ for containers
     volumes:

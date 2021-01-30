@@ -14,11 +14,11 @@ const server = require('http').createServer(app)
 // middleware, routing
 app.use('/', require('./routes/handler'))
 //cors
-app.use(cors())
 app.use(bodyParser.json())
+app.use(cors({ origin: 'http://rce-client-test.herokuapp.com' }))
 const io = socketIo(server, {
   cors: {
-    origin: 'http://localhost:3000',
+    origin: 'http://rce-client-test.herokuapp.com',
     methods: ['GET', 'POST'],
     allowedHeaders: ['my-custom-header'],
     credentials: true,
