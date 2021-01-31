@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^12.1.10",
     "ace-builds": "^1.4.12",
     "axios": "^0.21.1",
+    "express": "^4.17.1",
     "react": "^16.14.0",
     "react-ace": "^9.2.1",
     "react-dom": "^16.14.0",
@@ -16,7 +17,7 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "node server/server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -38,6 +39,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "proxy": "http://13.126.57.93"
+  }
 }
