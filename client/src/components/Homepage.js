@@ -43,6 +43,14 @@ const Homepage = () => {
   // non cached state vars
   const [output, setOutput] = useState('')
 
+  //code run on press of F5
+  useEffect(() => {
+    document.onkeydown = (keyDownEvent) => {
+      if (keyDownEvent.altKey && keyDownEvent.key == 'F5')
+        document.getElementById('run-btn').click()
+    }
+  })
+
   // on load effect
   useEffect(() => {
     var now = new Date()
@@ -81,7 +89,6 @@ const Homepage = () => {
 
   // on change in [joinedSessionCode] effect
   useEffect(() => {
-    console.log(joinedSessionCode)
     socket.emit('joinSession', {
       channelID: joinedSessionCode,
     })
@@ -186,7 +193,7 @@ const Homepage = () => {
             className="nav-btn"
             onClick={() =>
               window.open(
-                'https://github.com/nafees87n/remote-code-executor/blob/main/docs/DOCS.md'
+                'https://github.com/nafees87n/codebox/blob/main/docs/DOCS.md'
               )
             }
           >
@@ -195,7 +202,7 @@ const Homepage = () => {
           <button
             className="nav-btn"
             onClick={() =>
-              window.open('https://github.com/nafees87n/remote-code-executor')
+              window.open('https://github.com/nafees87n/codebox')
             }
           >
             <h2>github</h2>
@@ -224,7 +231,7 @@ const Homepage = () => {
               </select>
               <h2 className="region-title-divider">|</h2>
               <button id="run-btn" onClick={handlerun}>
-                RUN
+                RUN (ALT + F5)
               </button>{' '}
             </>
           ) : (
