@@ -39,7 +39,7 @@ io.on('connection', (client) => {
     // adds the client's ID to the room
     client.join(channelID)
     // server emits initialLoad event to this new client in the room
-    io.to(channelID).emit('initialLoad')
+    io.to(channelID).emit('initialLoad',{})
   })
   // when client emits a 'realTime' event
   client.on('realtime', (data) => {
