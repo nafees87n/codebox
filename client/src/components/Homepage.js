@@ -195,7 +195,7 @@ const Homepage = () => {
             className='nav-btn'
             onClick={() =>
               window.open(
-                'https://github.com/nafees87n/remote-code-executor/blob/main/docs/'
+                'https://github.com/nafees87n/codebox/blob/main/docs/'
               )
             }
           >
@@ -204,7 +204,7 @@ const Homepage = () => {
           <button
             className='nav-btn'
             onClick={() =>
-              window.open('https://github.com/nafees87n/remote-code-executor')
+              window.open('https://github.com/nafees87n/codebox')
             }
           >
             <h2>github</h2>
