@@ -18,7 +18,7 @@ import ModalBox from './ModalBox'
 import '../fonts/JetBrainsMono[wght].ttf'
 import './Homepage.css'
 // consts
-import CONSTANTS from '../../CONST/CONSTANTS'
+import CONSTANTS from '../CONST/CONSTANTS'
 
 // global vars
 var languages = ['python', 'c_cpp', 'javascript']
