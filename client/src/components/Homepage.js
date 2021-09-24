@@ -17,10 +17,12 @@ import ModalBox from './ModalBox'
 // style
 import '../fonts/JetBrainsMono[wght].ttf'
 import './Homepage.css'
+// consts
+import CONSTANTS from '../../CONST/CONSTANTS'
 
 // global vars
 var languages = ['python', 'c_cpp', 'javascript']
-const socket = openSocket('http://13.126.57.93')
+const socket = openSocket(CONSTANTS.SERVER_URL)
 const modes = { javascript: 'js', c_cpp: 'cpp', python: 'py' }
 const defaultCode = {
   javascript: "console.log('hello rce')",
@@ -58,7 +60,7 @@ const Homepage = () => {
       setUserCode('')
       setJoinedSessionCode('')
       axios
-        .get('http://13.126.57.93/code')
+        .get(CONSTANTS.SERVER_URL+'/code')
         .then(({ data }) => {
           setUserCode(data)
 
@@ -74,7 +76,7 @@ const Homepage = () => {
     }
     if (userCode === '') {
       axios
-        .get('http://13.126.57.93/code')
+        .get(CONSTANTS.SERVER_URL+'/code')
         .then(({ data }) => {
           setUserCode(data)
 
@@ -137,7 +139,7 @@ const Homepage = () => {
   // code run button handler
   const handlerun = () => {
     axios
-      .post('http://13.126.57.93/code', {
+      .post(CONSTANTS.SERVER_URL+'/code', {
         key: userCode,
         language: modes[mode],
         input: input,
