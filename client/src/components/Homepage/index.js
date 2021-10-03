@@ -13,7 +13,7 @@ import "ace-builds/src-noconflict/ext-language_tools";
 import "ace-builds/src-noconflict/theme-cobalt";
 // custom
 import useLocalStorage from "../../hooks/useLocalStorage";
-import ModalBox from "../ModalBox";
+import ModalBox from "../Modalbox/ModalBox";
 // style
 import "../../fonts/JetBrainsMono[wght].ttf";
 import "./Homepage.css";
@@ -208,6 +208,15 @@ const Homepage = () => {
           >
             <h2>github</h2>
           </button>
+          <button
+          className='nav-btn'
+          onClick={() => {
+            localStorage.clear()
+            window.location.reload()
+          }}
+        >
+          <h2>CLEAR DATA</h2>
+        </button>
         </div>
       </div>
       <div className="code-region">

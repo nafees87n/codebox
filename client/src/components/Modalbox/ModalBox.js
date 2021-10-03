@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import "./ModalBox.css";
 
 const ModalBox = (props) => {
   const [newSessionId, setNewSessionId] = useState('')
@@ -6,23 +7,17 @@ const ModalBox = (props) => {
   return (
     <div className='modal-box'>
       <div className='modal-btn-bar'>
+      <h2 className="white">Session Details</h2>
         <button
-          className='nav-btn'
+          className='rotate'
           onClick={() => {
             document.getElementsByClassName('modal-bg')[0].id = 'hidden'
           }}
         >
-          <h2>CLOSE</h2>
+          +
         </button>
-        <button
-          className='nav-btn'
-          onClick={() => {
-            localStorage.clear()
-            window.location.reload()
-          }}
-        >
-          <h2>CLEAR DATA</h2>
-        </button>
+        
+       
       </div>
       <h2 className='modal-title'>YOUR SESSION:</h2>
       <div className='modal-current-session'>
@@ -33,7 +28,7 @@ const ModalBox = (props) => {
             navigator.clipboard.writeText(userCode)
           }}
         >
-          <h3>(COPY)</h3>
+         (COPY)
         </button>
       </div>
       <h2 className='modal-new-session'>JOIN A SESSION?</h2>
@@ -46,12 +41,12 @@ const ModalBox = (props) => {
           }}
         ></input>
         <button
-          className='nav-btn'
+          className='black'
           onClick={() => {
             setJoinedSessionCode(newSessionId)
           }}
         >
-          <h3>(JOIN)</h3>
+          JOIN
         </button>
       </div>
     </div>
