@@ -19,13 +19,13 @@ import '../../fonts/JetBrainsMono[wght].ttf'
 import './Homepage.css'
 
 //constants
-const {SOCKET,MODES,DEFAULT_CODE,DOCS,GITHUB_URL} = require('../../constants.js')
+const CONSTANTS = require('../../constants.js')
 
 // global vars
 var languages = ["python", "c_cpp", "javascript"];
-const socket = openSocket(SOCKET);
-const modes = MODES;
-const defaultCode = DEFAULT_CODE;
+const socket = openSocket(CONSTANTS.SERVER_URL);
+const modes = CONSTANTS.MODES;
+const defaultCode = CONSTANTS.DEFAULT_CODE;
 
 // component
 const Homepage = () => {
@@ -193,14 +193,14 @@ const Homepage = () => {
           <button
             className="nav-btn"
             onClick={() =>
-              window.open(DOCS)
+              window.open(CONSTANTS.DOCS)
             }
           >
             <h2>docs</h2>
           </button>
           <button
             className="nav-btn"
-            onClick={() => window.open(GITHUB_URL)}
+            onClick={() => window.open(CONSTANTS.GITHUB_URL)}
           >
             <h2>github</h2>
           </button>
