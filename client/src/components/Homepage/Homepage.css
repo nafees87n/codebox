@@ -48,15 +48,15 @@
   margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 50%;
+  width: 35%;
 }
 
-.modal-btn-bar{
+/* .modal-btn-bar{
   display: flex;
   flex-direction: row;
   background-color: #fefefe;
   justify-content: space-between;
-}
+} */
 
 .modal-current-session {
   display: flex;
@@ -97,12 +97,14 @@
   border: none;
   margin: 5pt;
   margin-right: 10pt;
-  background-color: transparent;
-}
-
-.nav-btn:hover {
   color: #002240;
-  text-decoration: underline;
+
+  background-color: transparent;
+  cursor: pointer;
+}
+.white {
+  color: white;
+  margin-top: 20px;
 }
 
 .nav-btn:focus {
