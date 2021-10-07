@@ -57,12 +57,16 @@ const Homepage = () => {
   const [joinedSessionCode, setJoinedSessionCode] = useLocalStorage(
     'joinedSessionCode',
     ''
-    )
-  const [currentTheme, setCurrentTheme] =  useLocalStorage('currentTheme',CONSTANTS.DEFAULT_THEME)  //using custom hook to change the themes  
-  
- // non cached state vars
+  )
+  const [currentTheme, setCurrentTheme] = useLocalStorage(
+    'currentTheme',
+    CONSTANTS.DEFAULT_THEME
+  ) //using custom hook to change the themes
+
+  // non cached state vars
   const [output, setOutput] = useState('')
-  const [visible, setVisible] = useState(true) /* state to toggle the navbar of the screen */
+  const [visible, setVisible] =
+    useState(true) /* state to toggle the navbar of the screen */
 
   //code run on press of F5
   useEffect(() => {
@@ -92,28 +96,26 @@ const Homepage = () => {
       localStorage.setItem(
         'na-rce-storeTime',
         JSON.stringify(new Date().getTime())
-        )
-      }
+      )
+    }
     if (userCode === '') {
       axios
-      .get('/code')
-      .then(({ data }) => {
-        setUserCode(data)
-        
-        socket.emit('hostSession', {
-          channelID: data,
+        .get('/code')
+        .then(({ data }) => {
+          setUserCode(data)
+
+          socket.emit('hostSession', {
+            channelID: data,
           })
         })
         .catch((e) => console.log('error', e))
-      }
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      
-      
-      //Check whether the current screen size is desktop or mobile
-      if (window.screen.width < 500) {
-        setVisible(false)
-      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
 
+    //Check whether the current screen size is desktop or mobile
+    if (window.screen.width < 500) {
+      setVisible(false)
+    }
   }, [])
 
   // on change in [joinedSessionCode] effect
@@ -209,16 +211,20 @@ const Homepage = () => {
             <h2>Menu</h2>
           </button>
 
-          <select 
-            name="color-theme" 
-            id="color-theme" 
-            className="nav-btn" 
+          <select
+            name="color-theme"
+            id="color-theme"
+            className="nav-btn"
             onChange={handleThemeChange}
             style={{ display: visible ? 'block' : 'none' }}
             value={currentTheme}
           >
-            <option value={CONSTANTS.DEFAULT_THEME} selected>Default Theme</option>
-            {Object.keys(CONSTANTS.THEMES).map(theme=><option value={CONSTANTS.THEMES[theme]}>{theme}</option>)}
+            <option value={CONSTANTS.DEFAULT_THEME} selected>
+              Default Theme
+            </option>
+            {Object.keys(CONSTANTS.THEMES).map((theme) => (
+              <option value={CONSTANTS.THEMES[theme]}>{theme}</option>
+            ))}
           </select>
 
           {joinedSessionCode !== '' ? (
