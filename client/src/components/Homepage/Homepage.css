@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Encode+Sans:wght@300&display=swap');
+
 * {
   font-family: 'JetBrains Mono';
 }
@@ -58,7 +59,6 @@ flex-direction: row;
 background-color: #fefefe;
 justify-content: space-between;
 } */
-
 .modal-current-session {
   display: flex;
   flex-direction: row;
@@ -238,6 +238,31 @@ justify-content: space-between;
   border: 1px solid black;
 }
 
+@media only screen and (max-width: 565px) {
+  .nav {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nav #navigation {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .menu_btn {
+    display: block;
+  }
+
+  .nav-btn {
+    margin: 0px;
+  }
+
+  .nav-btn h2 {
+    margin-block-start: 5px;
+    margin-block-end: 5px;
+  }
+}
+
 @media only screen and (max-width: 500px) {
   #root {
     width: 100%;
@@ -245,24 +270,7 @@ justify-content: space-between;
     display: flex;
     flex-direction: column;
   }
-  .nav {
-    display: flex;
-    flex-direction: column;
-  }
-  .nav #navigation {
-    display: flex;
-    flex-direction: column;
-  }
-  .menu_btn {
-    display: block;
-  }
-  .nav-btn {
-    margin: 0px;
-  }
-  .nav-btn h2 {
-    margin-block-start: 5px;
-    margin-block-end: 5px;
-  }
+
   .code-region {
     height: 500px;
     overflow-y: scroll;
@@ -270,43 +278,54 @@ justify-content: space-between;
     width: 98%;
     margin: auto;
   }
+
   .input-region {
     height: 300px;
     overflow: scroll;
   }
+
   .output-region {
     height: 400px;
     overflow: scroll;
   }
+
   .region-title {
     padding: 5pt;
   }
+
   .region-title-divider {
     padding-left: 7px;
   }
+
   #language-select {
     padding-left: 0px;
   }
+
   #code_editor div {
     font-size: 12px;
   }
+
   .input-region {
     width: 98%;
     margin: auto;
     font-size: 13px;
   }
+
   #code-header h2 {
     padding: 2pt;
     margin: auto;
   }
+
   .output-region {
     width: 98%;
     margin: auto;
   }
+
   .modal-box {
     width: 95%;
     padding: 5px;
   }
+
   .modal-btn-bar {
     display: flex;
     flex-direction: row;
