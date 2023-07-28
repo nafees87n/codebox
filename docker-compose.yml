@@ -2,12 +2,12 @@ version: '3.8'
 services:
   # react development server
   client:
-    build: ./client
+    build: ./packages/client
     ports:
       - '3000:3000'
   # server container manages client requests
   server:
-    build: ./server
+    build: ./packages/server
     ports:
       - '9000:9000'
       # localhost:9000/ for host machine
