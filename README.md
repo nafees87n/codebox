@@ -37,7 +37,7 @@ The client application, linked above, is available to access the API. It enables
 
 ## Set Up
 
-User set up for this project is not required, as a deployed version can be accessed through the [client app](http://codebox.herokuapp.com) (linked at the top).
+User set up for this project is not required, as a deployed version can be accessed through the [client app](http://codebox.herokuapp.com).
 
 However if you wish to set the project up yourself, documentation has been provided in the `docs` folder. Check out [DOCS.md](https://github.com/nafees87n/codebox/blob/main/docs/DOCS.md) for a detailed reference. It describes local machine setup and service functioning. Read [SERVER.md](https://github.com/nafees87n/codebox/blob/main/docs/SERVER.md) for documentation on deployment.
 
